@@ -345,68 +345,61 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
       : { defaultCurrent: 1, defaultPageSize: 20, pageSize: 20, current: 1 };
 
   // ============================ useFetchData ============================
-  const action = useFetchData(
-    request
-      ? async (pageParams) => {
-          const actionParams = {
-            ...(pageParams || {}),
-            ...formSearch,
-            ...params,
-          };
-          // eslint-disable-next-line no-underscore-dangle
-          delete (actionParams as any)._timestamp;
-          const response = await request((actionParams as unknown) as U, proSort, proFilter);
-          return response as RequestData<T>;
-        }
-      : undefined,
-    defaultData,
-    {
-      pageInfo: propsPagination === false ? false : fetchPagination,
-      loading: props.loading,
-      dataSource: props.dataSource,
-      onDataSourceChange: props.onDataSourceChange,
-      onLoad,
-      onLoadingChange,
-      onRequestError,
-      postData,
-      manual: formSearch === undefined,
-      polling,
-      effects: [stringify(params), stringify(formSearch), stringify(proFilter), stringify(proSort)],
-      debounceTime: props.debounceTime,
-    },
-  );
+  const fetchData = useMemo(() => {
+    if (!request) return undefined;
+    return async (pageParams?: Record<string, any>) => {
+      const actionParams = {
+        ...(pageParams || {}),
+        ...formSearch,
+        ...params,
+      };
+      // eslint-disable-next-line no-underscore-dangle
+      delete (actionParams as any)._timestamp;
+      const response = await request((actionParams as unknown) as U, proSort, proFilter);
+      return response as RequestData<T>;
+    };
+  }, [formSearch, params, proFilter, proSort, request]);
+
+  const action = useFetchData(fetchData, defaultData, {
+    pageInfo: propsPagination === false ? false : fetchPagination,
+    loading: props.loading,
+    dataSource: props.dataSource,
+    onDataSourceChange: props.onDataSourceChange,
+    onLoad,
+    onLoadingChange,
+    onRequestError,
+    postData,
+    manual: formSearch === undefined,
+    polling,
+    effects: [stringify(params), stringify(formSearch), stringify(proFilter), stringify(proSort)],
+    debounceTime: props.debounceTime,
+  });
   // ============================ END ============================
 
   /** 页面编辑的计算 */
-  const pagination = useMemo(
-    () =>
-      mergePagination<T>(
-        propsPagination,
-        {
-          ...action.pageInfo,
-          setPageInfo: ({ pageSize, current }: PageInfo) => {
-            // pageSize 发生改变，并且你不是在第一页，切回到第一页
-            // 这样可以防止出现 跳转到一个空的数据页的问题
-            if (
-              pageSize !== action.pageInfo.pageSize &&
-              // 当前页码
-              action.pageInfo.current !== 1
-            ) {
-              action.setDataSource([]);
-              requestAnimationFrame(() => {
-                action.setPageInfo({
-                  pageSize,
-                  current: 1,
-                });
-              });
-            }
-            action.setPageInfo({ pageSize, current });
-          },
-        },
-        intl,
-      ),
-    [propsPagination, action, intl],
-  );
+  const pagination = useMemo(() => {
+    const pageConfig = {
+      ...action.pageInfo,
+      setPageInfo: ({ pageSize, current }: PageInfo) => {
+        const { pageInfo } = action;
+        // pageSize 发生改变，并且你不是在第一页，切回到第一页
+        // 这样可以防止出现 跳转到一个空的数据页的问题
+        if (pageSize === pageInfo.pageSize || pageInfo.current === 1) {
+          action.setPageInfo({ pageSize, current });
+          return;
+        }
+        // 清空数据，然后刷新不然可能会导致 pageSize 没有数据多
+        action.setDataSource([]);
+        requestAnimationFrame(() => {
+          action.setPageInfo({
+            pageSize,
+            current: 1,
+          });
+        });
+      },
+    };
+    return mergePagination<T>(propsPagination, pageConfig, intl);
+  }, [propsPagination, action, intl]);
 
   const counter = Container.useContainer();
 

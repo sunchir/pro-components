@@ -20,14 +20,8 @@ import Container from './container';
 import Toolbar from './components/ToolBar';
 import Alert from './components/Alert';
 import FormRender from './components/Form';
-import {
-  genColumnKey,
-  mergePagination,
-  useActionType,
-  tableColumnSort,
-  genColumnList,
-  isBordered,
-} from './utils';
+import { genColumnKey, mergePagination, useActionType, isBordered } from './utils';
+import { genProColumnToColumn } from './utils/genProColumnToColumn';
 
 import './index.less';
 import type {
@@ -38,6 +32,7 @@ import type {
   UseFetchDataAction,
 } from './typing';
 import type { ActionType } from '.';
+import { columnSort } from './utils/columnSort';
 
 function TableRender<T extends Record<string, any>, U, ValueType>(
   props: ProTableProps<T, U, ValueType> & {
@@ -93,12 +88,21 @@ function TableRender<T extends Record<string, any>, U, ValueType>(
   }, [counter.columnsMap, tableColumn]);
 
   /** 如果所有列中的 filters=true| undefined 说明是用的是本地筛选 任何一列配置 filters=false，就能绕过这个判断 */
-  const useLocaleFilter = props.columns?.every(
-    (column) =>
-      (column.filters === true && column.onFilter === true) ||
-      (column.filters === undefined && column.onFilter === undefined),
+  const useLocaleFilter = useMemo(
+    () =>
+      columns?.every(
+        (column) =>
+          (column.filters === true && column.onFilter === true) ||
+          (column.filters === undefined && column.onFilter === undefined),
+      ),
+    [columns],
   );
 
+  /**
+   * 如果是分页的新增，总是加到最后一行
+   *
+   * @returns
+   */
   const editableDataSource = (): T[] => {
     const { options: newLineOptions, defaultValue: row } = editableUtils.newLineRecord || {};
 
@@ -288,6 +292,10 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
     tooltip,
     ...rest
   } = props;
+
+  const className = classNames(defaultClassName, propsClassName);
+
+  /** 通用的来操作子节点的工具类 */
   const actionRef = useRef<ActionType>();
 
   const defaultFormRef = useRef();
@@ -299,18 +307,19 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
     }
   }, [propsActionRef]);
 
+  /** 单选多选的相关逻辑 */
   const [selectedRowKeys, setSelectedRowKeys] = useMountMergeState<React.ReactText[]>([], {
     value: propsRowSelection ? propsRowSelection.selectedRowKeys : undefined,
   });
 
-  const [selectedRows, setSelectedRows] = useMountMergeState<T[]>([]);
+  const selectedRowsRef = useRef<T[]>([]);
 
   const setSelectedRowsAndKey = useCallback(
     (keys: React.ReactText[], rows: T[]) => {
       setSelectedRowKeys(keys);
-      setSelectedRows(rows);
+      selectedRowsRef.current = rows;
     },
-    [setSelectedRowKeys, setSelectedRows],
+    [setSelectedRowKeys],
   );
 
   const [formSearch, setFormSearch] = useMountMergeState<Record<string, any> | undefined>(() => {
@@ -321,14 +330,6 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
     }
     return {};
   });
-
-  const manual = useMemo(() => {
-    //  formSearch = undefined  满足条件就不触发加载
-    if (formSearch === undefined) {
-      return true;
-    }
-    return false;
-  }, [formSearch === undefined, search]);
 
   const [proFilter, setProFilter] = useMountMergeState<Record<string, React.ReactText[]>>({});
   const [proSort, setProSort] = useMountMergeState<Record<string, SortOrder>>({});
@@ -368,7 +369,7 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
       onLoadingChange,
       onRequestError,
       postData,
-      manual,
+      manual: formSearch === undefined,
       polling,
       effects: [stringify(params), stringify(formSearch), stringify(proFilter), stringify(proSort)],
       debounceTime: props.debounceTime,
@@ -484,13 +485,13 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
 
   // ---------- 列计算相关 start  -----------------
   const tableColumn = useMemo(() => {
-    return genColumnList<T>({
+    return genProColumnToColumn<T>({
       columns: propsColumns,
       counter,
       columnEmptyText,
       type,
       editableUtils,
-    }).sort(tableColumnSort(counter.columnsMap));
+    }).sort(columnSort(counter.columnsMap));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [propsColumns, counter, columnEmptyText, type, editableUtils.editableKeys.join(',')]);
 
@@ -555,8 +556,7 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
       />
     );
 
-  const className = classNames(defaultClassName, propsClassName);
-
+  /** 内置的工具栏 */
   const toolbarDom =
     toolBarRender === false ? null : (
       <Toolbar<T>
@@ -564,7 +564,7 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
         hideToolbar={
           options === false && !headerTitle && !toolBarRender && !toolbar && !isLightFilter
         }
-        selectedRows={selectedRows}
+        selectedRows={selectedRowsRef.current}
         selectedRowKeys={selectedRowKeys}
         tableColumn={tableColumn}
         tooltip={tooltip}
@@ -582,7 +582,7 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
     propsRowSelection !== false ? (
       <Alert<T>
         selectedRowKeys={selectedRowKeys}
-        selectedRows={selectedRows}
+        selectedRows={selectedRowsRef.current}
         onCleanSelected={onCleanSelected}
         alertOptionRender={rest.tableAlertOptionRender}
         alertInfoRender={tableAlertRender}

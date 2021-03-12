@@ -3,7 +3,7 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 import classNames from 'classnames';
 import type { SiderProps } from 'antd/lib/layout/Sider';
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
 import './index.less';
 import type { WithFalse } from '../../typings';
@@ -76,7 +76,7 @@ export type SiderMenuProps = {
 } & Pick<BaseMenuProps, Exclude<keyof BaseMenuProps, ['onCollapse']>>;
 
 export const defaultRenderCollapsedButton = (collapsed?: boolean) =>
-  collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />;
+  collapsed ? <RightOutlined /> : <LeftOutlined />;
 
 export type PrivateSiderMenuProps = {
   matchMenuKeys: string[];
@@ -103,6 +103,7 @@ const SiderMenu: React.FC<SiderMenuProps & PrivateSiderMenuProps> = (props) => {
     onOpenChange,
     headerHeight,
     logoStyle,
+    sliderOverflow,
   } = props;
   const baseClassName = `${prefixCls}-sider`;
   const { flatMenuKeys } = MenuCounter.useContainer();
@@ -133,7 +134,7 @@ const SiderMenu: React.FC<SiderMenuProps & PrivateSiderMenuProps> = (props) => {
         <div
           style={{
             width: collapsed ? 48 : siderWidth,
-            overflow: 'hidden',
+            overflow: sliderOverflow || 'hidden',
             flex: `0 0 ${collapsed ? 48 : siderWidth}px`,
             maxWidth: collapsed ? 48 : siderWidth,
             minWidth: collapsed ? 48 : siderWidth,
@@ -156,7 +157,7 @@ const SiderMenu: React.FC<SiderMenuProps & PrivateSiderMenuProps> = (props) => {
         }}
         collapsedWidth={48}
         style={{
-          overflow: 'hidden',
+          overflow: sliderOverflow || 'hidden',
           paddingTop: layout === 'mix' && !isMobile ? headerHeight : undefined,
           ...style,
         }}
@@ -188,6 +189,7 @@ const SiderMenu: React.FC<SiderMenuProps & PrivateSiderMenuProps> = (props) => {
             flex: 1,
             overflowY: 'auto',
             overflowX: 'hidden',
+            overflow: sliderOverflow,
           }}
         >
           {menuContentRender ? menuContentRender(props, menuDom) : menuDom}

@@ -1,5 +1,5 @@
 import './index.less';
-import Icon, { createFromIconfontCN } from '@ant-design/icons';
+import Icon, { createFromIconfontCN, LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import classNames from 'classnames';
@@ -95,14 +95,16 @@ class MenuUtil {
 
   props: BaseMenuProps;
 
-  getNavMenuItems = (menusData: MenuDataItem[] = [], isChildren: boolean): React.ReactNode[] =>
-    menusData.map((item) => this.getSubMenuOrItem(item, isChildren)).filter((item) => item);
+  getNavMenuItems = (menusData: MenuDataItem[] = [], isChildren: boolean): React.ReactNode[] => {
+    return menusData.map((item) => this.getSubMenuOrItem(item, isChildren)).filter((item) => item);
+  };
 
   /** Get SubMenu or Item */
   getSubMenuOrItem = (item: MenuDataItem, isChildren: boolean): React.ReactNode => {
+    const { prefixCls } = this.props;
     if (Array.isArray(item.children) && item && item.children.length > 0) {
       const name = this.getIntlName(item);
-      const { subMenuItemRender, prefixCls, menu, iconPrefixes } = this.props;
+      const { subMenuItemRender, menu, iconPrefixes } = this.props;
       //  get defaultTitle by menuItemRender
       const defaultTitle = item.icon ? (
         <span className={`${prefixCls}-menu-item`} title={name}>
@@ -114,20 +116,61 @@ class MenuUtil {
           {name}
         </span>
       );
-
       // subMenu only title render
       const title = subMenuItemRender
         ? subMenuItemRender({ ...item, isUrl: false }, defaultTitle)
         : defaultTitle;
       const MenuComponents: React.ElementType = menu?.type === 'group' ? ItemGroup : SubMenu;
+      if (item.group) {
+        const itemTitleRender = item.group;
+        return (
+          <Menu.ItemGroup title={itemTitleRender} key={`${item.key || item.path}-${title}`}>
+            <MenuComponents
+              title={title}
+              key={item.key || item.path}
+              onTitleClick={item.onTitleClick}
+            >
+              {this.getNavMenuItems(item.children, true)}
+            </MenuComponents>
+          </Menu.ItemGroup>
+        );
+      }
       return (
         <MenuComponents title={title} key={item.key || item.path} onTitleClick={item.onTitleClick}>
           {this.getNavMenuItems(item.children, true)}
         </MenuComponents>
       );
     }
+    let itemTitleRender = item.group ? item.group : null;
 
-    return (
+    if (item.iconCollapse && item.onTitleClick) {
+      itemTitleRender = (
+        <div
+          onClick={(e) => {
+            e.preventDefault();
+            item.onTitleClick();
+          }}
+        >
+          {item.group}
+          <span className={`${prefixCls}-menu-item-title-collapsible`}>
+            <span className={`${prefixCls}-menu-item-title-collapsible-blank`}>
+              <span className={`${prefixCls}-menu-item-title-collapsible-blank-content`}></span>
+            </span>
+            <span className={`${prefixCls}-menu-item-title-collapsible-container`}>
+              {item.iconCollapse}
+            </span>
+          </span>
+        </div>
+      );
+    }
+
+    return itemTitleRender ? (
+      <Menu.ItemGroup title={itemTitleRender} key={item.key || item.path}>
+        <Menu.Item disabled={item.disabled} key={item.key || item.path} onClick={item.onTitleClick}>
+          {this.getMenuItemPath(item, isChildren)}
+        </Menu.Item>{' '}
+      </Menu.ItemGroup>
+    ) : (
       <Menu.Item disabled={item.disabled} key={item.key || item.path} onClick={item.onTitleClick}>
         {this.getMenuItemPath(item, isChildren)}
       </Menu.Item>
@@ -242,9 +285,11 @@ const BaseMenu: React.FC<BaseMenuProps & PrivateSiderMenuProps> = (props) => {
     matchMenuKeys,
     iconfontUrl,
     collapsed,
+    onCollapse,
     selectedKeys: propsSelectedKeys,
     onSelect,
     openKeys: propsOpenKeys,
+    collapseTop,
   } = props;
 
   // 用于减少 defaultOpenKeys 计算的组件
@@ -353,6 +398,15 @@ const BaseMenu: React.FC<BaseMenuProps & PrivateSiderMenuProps> = (props) => {
 
   if (finallyData && finallyData?.length < 1) {
     return null;
+  }
+  if (collapseTop && menuData && menuData?.length > 0) {
+    menuData[0] = {
+      ...{
+        iconCollapse: collapsed ? <RightOutlined /> : <LeftOutlined />,
+        onTitleClick: () => (onCollapse ? onCollapse(!collapsed) : null),
+      },
+      ...menuData[0],
+    };
   }
   return (
     <Menu

@@ -29,6 +29,9 @@ export default () => {
       }}
     >
       <ProLayout
+        collapseTop
+        collapsedButtonRender={false}
+        sliderOverflow={'inherit'}
         {...defaultProps}
         location={{
           pathname,

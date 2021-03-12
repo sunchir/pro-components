@@ -1,18 +1,18 @@
 {
-  "name": "@ant-design/pro-layout",
-  "version": "6.15.2",
-  "description": "@ant-design/pro-layout",
+  "name": "@choerodon-ui/pro-layout",
+  "version": "0.0.0-beta.0",
+  "description": "@choerodon-ui/pro-layout",
   "keywords": [
     "antd",
     "admin",
-    "ant-design",
-    "ant-design-pro"
+    "choerodon-ui",
+    "choerodon-ui-pro"
   ],
-  "homepage": "https://github.com/ant-design/pro-components/tree/master/packages/layout#readme",
-  "bugs": "http://github.com/umijs/plugins/issues",
+  "homepage": "https://open-hand.gitee.io/choerodon-ui",
+  "bugs": "https://github.com/sunchir/choerodon-ui-pro/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ant-design/pro-components"
+    "url": "https://github.com/sunchir/choerodon-ui-pro"
   },
   "license": "MIT",
   "sideEffects": [
@@ -34,8 +34,8 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.0.0",
-    "@ant-design/pro-provider": "1.4.8",
-    "@ant-design/pro-utils": "1.14.2",
+    "@ant-design/pro-provider": "1.4.7",
+    "@ant-design/pro-utils": "1.14.0",
     "@umijs/route-utils": "^1.0.35",
     "@umijs/use-params": "^1.0.2",
     "classnames": "^2.2.6",
@@ -57,7 +57,6 @@
     "access": "public"
   },
   "authors": [
-    "chencheng <sorrycc@gmail.com> (https://github.com/sorrycc)",
-    "chenshuai2144 <qixian.cs@outlook.om> (https://github.com/chenshuai2144)"
+    "sunchir <gxc685@163.com> (https://github.com/sunchir)"
   ]
 }

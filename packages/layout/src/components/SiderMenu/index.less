@@ -5,6 +5,8 @@
 
 @nav-header-height: @pro-layout-header-height;
 
+@layout-sider-background: #0f1358;
+
 .@{pro-layout-sider-menu-prefix-cls} {
   position: relative;
   background-color: @layout-sider-background;
@@ -21,6 +23,133 @@
     &-submenu-title {
       transition: none;
     }
+  }
+  .@{ant-prefix}-menu-dark .@{ant-prefix}-menu-inline.@{ant-prefix}-menu-sub {
+    background-color: @layout-sider-background;
+  }
+  .@{ant-prefix}-menu-dark.@{ant-prefix}-menu-dark:not(.@{ant-prefix}-menu-horizontal)
+    .@{ant-prefix}-menu-item-selected {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    background-color: @layout-sider-background;
+    .anticon {
+      background: #5365ea;
+    }
+  }
+
+  .@{ant-prefix}-menu-submenu-open,
+  .@{ant-prefix}-menu-dark .@{ant-prefix}-menu-submenu-selected {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    background-color: @layout-sider-background;
+    .anticon {
+      background: #5365ea;
+    }
+  }
+
+  .@{ant-prefix}-menu-inline-collapsed > .@{ant-prefix}-menu-item,
+  .@{ant-prefix}-menu-inline-collapsed
+    > .@{ant-prefix}-menu-item-group
+    > .@{ant-prefix}-menu-item-group-list
+    > .@{ant-prefix}-menu-item,
+  .@{ant-prefix}-menu-inline-collapsed
+    > .@{ant-prefix}-menu-item-group
+    > .@{ant-prefix}-menu-item-group-list
+    > .@{ant-prefix}-menu-submenu
+    > .@{ant-prefix}-menu-submenu-title,
+  .@{ant-prefix}-menu-inline-collapsed
+    > .@{ant-prefix}-menu-submenu
+    > .@{ant-prefix}-menu-submenu-title {
+    padding: 2px calc(50% - 24px / 2);
+    line-height: 0px;
+    .anticon {
+      line-height: 30px;
+    }
+  }
+
+  .@{ant-prefix}-menu-item,
+  .@{ant-prefix}-menu-submenu {
+    .anticon {
+      width: 26px;
+      height: 26px;
+      line-height: 30px;
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 4px;
+    }
+  }
+  .@{ant-prefix}-pro-sider .@{ant-prefix}-menu-item .@{ant-prefix}-pro-sider-collapsed-button {
+    .anticon {
+      width: 26px;
+      height: 26px;
+      line-height: 28px;
+      border-radius: 4px;
+      transition: none;
+    }
+  }
+
+  .@{ant-prefix}-menu-item-group-title {
+    padding-top: 23px;
+    padding-left: 23px;
+    font-weight: 400;
+    font-size: 12px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    line-height: 20px;
+  }
+  .@{ant-prefix}-menu-inline-collapsed {
+    .@{ant-prefix}-menu-item-group-title {
+      padding-left: 0px;
+      text-align: center;
+    }
+  }
+
+  .@{ant-prefix}-pro-menu-item-title-collapsible-blank {
+    position: absolute;
+    display: inline-block;
+    width: 9px;
+    height: 30px;
+    margin-top: -5px;
+    margin-left: 5px;
+    overflow: hidden;
+    background: transparent;
+    &-content {
+      display: inline-block;
+      width: 150px;
+      height: 44px;
+      margin-top: -8px;
+      background-color: white;
+      border-radius: 46%;
+    }
+  }
+
+  .@{ant-prefix}-pro-menu-item-title-collapsible {
+    position: absolute;
+    left: 0px;
+    display: inline-block;
+    width: 100%;
+    text-align: end;
+    .anticon {
+      position: relative;
+      left: 2px;
+      z-index: 100;
+      width: 14px;
+      height: 14px;
+      background: #5365ea;
+      border-radius: 50%;
+      svg {
+        width: 12px;
+        height: 12px;
+        line-height: 14px;
+      }
+    }
+  }
+
+  .@{ant-prefix}-pro-menu-item-title-collapsible-container {
+    position: relative;
+    position: relative;
+    left: 5px;
+    width: 100px;
+    height: 100px;
+    background: inherit;
   }
 
   &.@{ant-prefix}-layout-sider-light {
@@ -184,7 +313,7 @@
 
   &-collapsed-button {
     border-top: @border-width-base @border-style-base rgba(0, 0, 0, 0.25);
-    .anticon {
+    .@{ant-prefix}icon {
       font-size: 16px;
     }
   }

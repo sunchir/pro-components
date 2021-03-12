@@ -10,6 +10,7 @@ export default {
         name: '欢迎',
         icon: <SmileOutlined />,
         component: './Welcome',
+        group: '协作',
       },
       {
         path: '/admin',
@@ -17,6 +18,7 @@ export default {
         icon: <CrownOutlined />,
         access: 'canAdmin',
         component: './Admin',
+        group: '协作',
         routes: [
           {
             path: '/admin/sub-page1',
@@ -43,6 +45,7 @@ export default {
         icon: <TabletOutlined />,
         path: '/list',
         component: './ListTableList',
+        group: '协作2',
         routes: [
           {
             path: '/list/sub-page',
@@ -87,6 +90,7 @@ export default {
         path: 'https://ant.design',
         name: 'Ant Design 官网外链',
         icon: <AntDesignOutlined />,
+        group: '协作',
       },
     ],
   },

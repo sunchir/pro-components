@@ -53,23 +53,27 @@ export type PureSettings = {
    * @name 切割菜单
    */
   splitMenus?: boolean;
+  /** @name 是否可以超出 */
+  sliderOverflow?: 'hidden' | 'inherit' | 'scroll' | 'auto';
+  collapseTop?: boolean;
 };
 
 export type ProSettings = PureSettings & RenderSetting;
 
 const defaultSettings: ProSettings = {
-  navTheme: 'dark',
-  layout: 'side',
+  layout: 'mix',
+  headerTheme: 'light',
   contentWidth: 'Fluid',
+  title: '',
   fixedHeader: false,
-  fixSiderbar: false,
+  fixSiderbar: true,
+  colorWeak: false,
   menu: {
     locale: true,
   },
   headerHeight: 48,
-  title: 'Ant Design Pro',
   iconfontUrl: '',
-  primaryColor: 'daybreak',
+  primaryColor: '#0F1358',
   splitMenus: false,
 };
 export default defaultSettings;

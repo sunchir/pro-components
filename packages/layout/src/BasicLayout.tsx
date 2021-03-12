@@ -477,7 +477,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
 };
 
 BasicLayout.defaultProps = {
-  logo: 'https://gw.alipayobjects.com/zos/antfincdn/PmY%24TNNDBI/logo.svg',
+  logo: 'https://pic.downk.cc/item/5fe005a73ffa7d37b317b7fb.png',
   ...defaultSettings,
   location: isBrowser() ? window.location : undefined,
 };

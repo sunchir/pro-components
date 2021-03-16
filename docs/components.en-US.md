@@ -10,10 +10,10 @@ nav:
 
 # Architecture Design
 
-ProComponents was developed to reduce the cost of implementing CRUD in the middle and backend, with the idea of reducing the necessary state maintenance and focusing more on the business.
+<!-- ProComponents was developed to reduce the cost of implementing CRUD in the middle and backend, with the idea of reducing the necessary state maintenance and focusing more on the business. -->
 
 - [ProLayout](/components/layout) solves the layout problem and provides out-of-the-box menu and breadcrumb functionality
-- [ProTable](/components/table) solves table issues, abstracts web requests and table formatting
+<!-- - [ProTable](/components/table) solves table issues, abstracts web requests and table formatting
 - [ProForm](/components/form) solves form issues, pre-defines common layouts and behaviors
 - [ProCard](/components/card) provides card slicing and raster layout capabilities
 - [ProDescriptions](/components/descriptions) provides the ability to use the same configuration as a table
@@ -90,7 +90,7 @@ const request = (url, options) => {
 
 ProTable, ProDescriptions share a common set of configurations that can use the same columns and requests to generate data, the only difference being that Table requires an array, while ProDescriptions only requires an object. Here are the specific configurations.
 
-```tsx | pure
+````tsx | pure
 /**
  * Commonly supported render for each component
  */
@@ -183,4 +183,5 @@ export type ProSchema<T = unknown, U = string, Extra = unknown> = {
    */
   hideInDescriptions?: boolean;
 } & Extra;
-```
+``` -->
+````

@@ -253,6 +253,10 @@ export interface Settings {
   // Usage: https://github.com/ant-design/ant-design-pro/pull/3517
   iconfontUrl: string;
   colorWeak: boolean;
+  /** @name 是否可以超出 */
+  sliderOverflow?: 'hidden' | 'inherit' | 'scroll' | 'auto';
+  /** 头部缩进配置 */
+  collapseTop?: boolean;
 }
 ```
 
@@ -271,7 +275,8 @@ export interface MenuDataItem {
   locale?: string;
   name?: string;
   path: string;
-
+  /** 增加分组划分 */
+  group?: string;
   [key: string]: any;
 }
 ```

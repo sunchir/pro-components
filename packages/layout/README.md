@@ -1,6 +1,6 @@
-# @ant-design/pro-layout
+# @choerodon-ui/pro-layout
 
-![](https://gw.alipayobjects.com/zos/antfincdn/HSeAGqaEwn/1586504755352-479bf47d-97a6-4080-afed-d38ffe905e57.png)
+![](https://img.imgdb.cn/item/604eae3d5aedab222c545797.jpg)
 
 ProLayout provides a standard, yet flexible, middle and backend layout, with one-click layout switching and automatic menu generation. It can be used with PageContainer to automatically generate breadcrumbs, page headers, and provide a low-cost solution to access the footer toolbar.
 
@@ -44,6 +44,8 @@ export interface MenuDataItem {
   flatMenu?: boolean;
 
   [key: string]: any;
+  sliderOverflow?: 'hidden' | 'inherit' | 'scroll' | 'auto';
+  collapseTop?: boolean;
 }
 ```
 
@@ -54,11 +56,11 @@ ProLayout will automatically select the menu based on `location.pathname` and au
 Using npm:
 
 ```bash
-$ npm install --save  @ant-design/pro-layout
+$ npm install --save  @choerodon-ui/pro-layout
 ```
 
 or using yarn:
 
 ```bash
-$ yarn add @ant-design/pro-layout
+$ yarn add @choerodon-ui/pro-layout
 ```

@@ -25,9 +25,9 @@ const tailPkgList = pkgList
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default {
-  title: 'ProComponents',
+  title: `  `,
   mode: 'site',
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  logo: 'https://pic.downk.cc/item/5fe005a73ffa7d37b317b7fb.png',
   extraBabelPlugins: [
     [
       'import',
@@ -48,26 +48,26 @@ export default {
       property: 'og:image',
       content: 'https://procomponents.ant.design/icon.png',
     },
-    {
-      property: 'og:description',
-      content: '🏆 Use Ant Design like a Pro!',
-    },
-    {
-      name: 'keywords',
-      content: '中后台,admin,Ant Design,ant design,Table,react,alibaba',
-    },
-    {
-      name: 'description',
-      content: '🏆 Use Ant Design like a Pro! 包含 table form 等多个组件。',
-    },
-    {
-      name: 'apple-mobile-web-app-capable',
-      content: 'yes',
-    },
-    {
-      name: 'apple-mobile-web-app-status-bar-style"',
-      content: 'black-translucent',
-    },
+    // {
+    //   property: 'og:description',
+    //   content: '🏆 Use Ant Design like a Pro!',
+    // },
+    // {
+    //   name: 'keywords',
+    //   content: '中后台,admin,Ant Design,ant design,Table,react,alibaba',
+    // },
+    // {
+    //   name: 'description',
+    //   content: '🏆 Use Ant Design like a Pro! 包含 table form 等多个组件。',
+    // },
+    // {
+    //   name: 'apple-mobile-web-app-capable',
+    //   content: 'yes',
+    // },
+    // {
+    //   name: 'apple-mobile-web-app-status-bar-style"',
+    //   content: 'black-translucent',
+    // },
   ],
   alias,
   // 用于切换 antd 暗黑模式
@@ -86,14 +86,14 @@ export default {
       null,
       {
         title: 'GitHub',
-        path: 'https://github.com/ant-design/pro-components',
+        path: 'https://github.com/sunchir/pro-components',
       },
     ],
     'zh-CN': [
       null,
       {
         title: 'GitHub',
-        path: 'https://github.com/ant-design/pro-components',
+        path: 'https://github.com/sunchir/pro-components',
       },
     ],
   },
@@ -123,68 +123,68 @@ export default {
       : [],
   menus: {
     '/components': [
-      {
-        title: '架构设计',
-        children: ['components.md'],
-      },
+      // {
+      //   title: '架构设计',
+      //   children: ['components.md'],
+      // },
       {
         title: '布局',
         children: [
           'layout',
           'PageContainer/index',
-          'card',
+          // 'card',
           'WaterMark/index',
-          'StatisticsCard/index',
+          // 'StatisticsCard/index',
         ],
       },
-      {
-        title: '数据录入',
-        children: [
-          'form',
-          'FieldSet/index',
-          'Group/index',
-          'QueryFilter/index',
-          'StepsForm/index',
-          'ModalForm/index',
-        ],
-      },
-      {
-        title: '数据展示',
-        children: ['table', 'EditableTable/index', 'list', 'description'],
-      },
-      {
-        title: '通用',
-        children: ['skeleton', 'field'],
-      },
+      // {
+      //   title: '数据录入',
+      //   children: [
+      //     'form',
+      //     'FieldSet/index',
+      //     'Group/index',
+      //     'QueryFilter/index',
+      //     'StepsForm/index',
+      //     'ModalForm/index',
+      //   ],
+      // },
+      // {
+      //   title: '数据展示',
+      //   children: ['table', 'EditableTable/index', 'list', 'description'],
+      // },
+      // {
+      //   title: '通用',
+      //   children: ['skeleton', 'field'],
+      // },
     ],
     '/en-US/components': [
-      {
-        title: 'Architecture Design',
-        children: ['components.en-US.md'],
-      },
+      // {
+      //   title: 'Architecture Design',
+      //   children: ['components.en-US.md'],
+      // },
       {
         title: 'Layout',
         children: ['layout', 'PageContainer/index', 'card'],
       },
-      {
-        title: 'Data entry',
-        children: [
-          'form',
-          'FieldSet/index',
-          'Group/index',
-          'QueryFilter/index',
-          'StepsForm/index',
-          'ModalForm/index',
-        ],
-      },
-      {
-        title: 'Data Display',
-        children: ['table', 'EditableTable/index', 'list', 'description'],
-      },
-      {
-        title: 'General',
-        children: ['skeleton', 'field'],
-      },
+      // {
+      //   title: 'Data entry',
+      //   children: [
+      //     'form',
+      //     'FieldSet/index',
+      //     'Group/index',
+      //     'QueryFilter/index',
+      //     'StepsForm/index',
+      //     'ModalForm/index',
+      //   ],
+      // },
+      // {
+      //   title: 'Data Display',
+      //   children: ['table', 'EditableTable/index', 'list', 'description'],
+      // },
+      // {
+      //   title: 'General',
+      //   children: ['skeleton', 'field'],
+      // },
     ],
   },
 };

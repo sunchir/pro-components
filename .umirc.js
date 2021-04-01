@@ -117,6 +117,7 @@ export default {
   theme: {
     '@s-site-menu-width': '258px',
   },
+  publicPath: process.env.NODE_ENV === 'production' ? '/pro-components/' : '/',
   links:
     process.env.NODE_ENV === 'development'
       ? ['https://gw.alipayobjects.com/os/lib/antd/4.6.6/dist/antd.css']

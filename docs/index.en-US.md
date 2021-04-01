@@ -1,10 +1,10 @@
 ---
-title: ProComponents - Page level front-end components
+title: choerodon-ui-pro - The collision of performance components and performance tools
 order: 10
 sidebar: false
 hero:
-  title: ProComponents
-  desc: 🏆 Use Ant Design like a Pro!
+  title: choerodon-ui-pro
+  desc: 🏆 choerodon-ui-pro!
   actions:
     - text: 🥳 quick-start →
       link: /en-US/docs/getting-started
@@ -12,13 +12,7 @@ hero:
 features:
   - icon: https://gw.alipayobjects.com/os/q/cms/images/k9ziitmp/13668549-b393-42a2-97c3-a6365ba87ac2_w96_h96.png
     title: Easy to use
-    desc: Wrapped in Ant Design to make it easier to use
-  - icon: https://gw.alipayobjects.com/os/q/cms/images/k9ziik0f/487a2685-8f68-4c34-824f-e34c171d0dfd_w96_h96.png
-    title: Ant Design
-    desc: The same design system as Ant Design, seamlessly connects to antd project
-  - icon: https://gw.alipayobjects.com/os/q/cms/images/k9ziip85/89434dcf-5f1d-4362-9ce0-ab8012a85924_w96_h96.png
-    title: Internationalization
-    desc: Provides complete internationalization language support, and connects to the Ant Design system
+    desc: easier to use
   - icon: https://gw.alipayobjects.com/mdn/rms_05efff/afts/img/A*-3XMTrwP85wAAAAAAAAAAAAABkARQnAQ
     title: preset style
     desc: The style is the same as antd, no need to change it, it's a natural fit
@@ -29,21 +23,8 @@ features:
     title: TypeScript
     desc: Development with TypeScript, complete with type definition files
 
-footer: Open-source MIT Licensed | Copyright © 2017-present
+footer: Open-source MIT Licensed | Copyright © 2021-present
 ---
-
-## Component Board
-
-| Components | Downloads | Versions |
-| --- | --- | --- |
-| pro-layout | [![layout](https://img.shields.io/npm/dw/@ant-design/pro-layout.svg)](https://www.npmjs.com/package/@ant-design/pro-layout) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-layout.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-layout) |
-| pro-table | [![table](https://img.shields.io/npm/dw/@ant-design/pro-table.svg)](https://www.npmjs.com/package/@ant-design/pro-table) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-table.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-table) |
-| pro-field | [![field](https://img.shields.io/npm/dw/@ant-design/pro-field.svg)](https://www.npmjs.com/package/@ant-design/pro-field) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-field.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-field) |
-| pro-form | [![form](https://img.shields.io/npm/dw/@ant-design/pro-form.svg)](https://www.npmjs.com/package/@ant-design/pro-form) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-form.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-form) |
-| pro-skeleton | [![skeleton](https://img.shields.io/npm/dw/@ant-design/pro-skeleton.svg)](https://www.npmjs.com/package/@ant-design/pro-skeleton) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-skeleton.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-skeleton) |
-| pro-list | [![list](https://img.shields.io/npm/dw/@ant-design/pro-list.svg)](https://www.npmjs.com/package/@ant-design/pro-list) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-list.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-list) |
-| pro-card | [![card](https://img.shields.io/npm/dw/@ant-design/pro-card.svg)](https://www.npmjs.com/package/@ant-design/pro-card) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-card.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-card) |
-| pro-descriptions | [![descriptions](https://img.shields.io/npm/dw/@ant-design/pro-card.svg)](https://www.npmjs.com/package/@ant-design/pro-descriptions) | [![npm package](https://img.shields.io/npm/v/@ant-design/pro-descriptions.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-descriptions) |
 
 ## 🖥 Browser Compatibility
 

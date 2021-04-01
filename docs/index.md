@@ -1,10 +1,10 @@
 ---
-title: ProComponents - 页面级别的前端组件
+title: choerodon-ui-pro - 效能组件和效能工具的碰撞
 order: 10
 sidebar: false
 hero:
-  title: ProComponents
-  desc: 🏆 Use Ant Design like a Pro!
+  title: choerodon-ui-pro
+  desc: 🏆 前端效能脚手架!
   actions:
     - text: 🥳 快速开始 →
       link: /docs/getting-started
@@ -20,7 +20,7 @@ features:
     title: TypeScript
     desc: 使用 TypeScript 开发，提供完整的类型定义文件
 
-footer: Open-source MIT Licensed | Copyright © 2017-present
+footer: Open-source MIT Licensed | Copyright © 2021-present
 ---
 
 ## 🖥 浏览器兼容性

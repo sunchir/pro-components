@@ -97,7 +97,7 @@ PageContainer 配置 `ghost` 可以将页头切换为透明模式。
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| title | layout 的左上角 的 title | `ReactNode` | `'Ant Design Pro'` |
+| title | layout 的左上角 的 title | `ReactNode` | `'Choerodon-Ui'` |
 | logo | layout 的左上角 logo 的 url | `ReactNode` \| `()=> ReactNode` | - |
 | pure | 是否删除掉所有的自带界面 | `boolean` | - |
 | loading | layout 的加载态 | `boolean` | - |
@@ -114,9 +114,9 @@ PageContainer 配置 `ghost` 可以将页头切换为透明模式。
 | headerTheme | 顶部导航的主题，mix 模式生效 | `light` \| `dark` | `dark` |
 | fixedHeader | 是否固定 header 到顶部 | `boolean` | `false` |
 | fixSiderbar | 是否固定导航 | `boolean` | `false` |
-| breakpoint | 触发响应式布局的[断点](https://ant.design/components/grid-cn/#Col) | `Enum { 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' }` | `lg` |
+| breakpoint | 触发响应式布局的[断点](https://github.com/sunchir/choerodon-ui-pro/components/grid-cn/#Col) | `Enum { 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' }` | `lg` |
 | menu | 关于 menu 的配置，暂时只有 locale,locale 可以关闭 menu 的自带的全球化 | `{ locale: boolean, defaultOpenAll: boolean }` | `{ locale: true }` |
-| iconfontUrl | 使用 [IconFont](https://ant.design/components/icon-cn/#components-icon-demo-iconfont) 的图标配置 | `URL` | - |
+| iconfontUrl | 使用 [IconFont](https://github.com/sunchir/choerodon-ui-pro/components/icon-cn/#components-icon-demo-iconfont) 的图标配置 | `URL` | - |
 | locale | 当前 layout 的语言设置 | `zh-CN` \| `zh-TW` \| `en-US` | navigator.language |
 | settings | layout 的设置 | [`Settings`](#Settings) | - |
 | siderWidth | 侧边菜单宽度 | `number` | 208 |
@@ -140,7 +140,7 @@ PageContainer 配置 `ghost` 可以将页头切换为透明模式。
 | route | 用于生成菜单和面包屑。umi 的 Layout 会自动带有 | [route](#Route) | - |
 | disableMobile | 禁止自动切换到移动页面 | `boolean` | false |
 | links | 显示在菜单右下角的快捷操作 | `ReactNode[]` | - |
-| menuProps | 传递到 antd menu 组件的 props, 参考 (https://ant.design/components/menu-cn/) | `MenuProps` | undefined |
+| menuProps | 传递到 antd menu 组件的 props, 参考 (https://github.com/sunchir/choerodon-ui-pro/components/menu-cn/) | `MenuProps` | undefined |
 | waterMarkProps | 配置水印，水印是 PageContainer 的功能，layout 只是透传给 PageContainer | [WaterMarkProps](/components/water-mark) | - |
 
 ### SettingDrawer
@@ -224,7 +224,7 @@ const title = getPageTitle({
 | pathname | 当前的 pathname | location.pathname | - |
 | breadcrumb | MenuDataItem 的合集 | `{ [path: string]: MenuDataItem }` | - |
 | menu | menu 的配置项，默认 `{locale: true}` | `{ locale: boolean }` | - |
-| title | title 的类型 | string | 'Ant Design Pro' |
+| title | title 的类型 | string | 'Choerodon-Ui' |
 | formatMessage | react-intl 的 formatMessage 方法 | `(data: { id: any; defaultMessage?: string }) => string;` | - |
 
 ### Settings
@@ -235,7 +235,7 @@ const title = getPageTitle({
 export interface Settings {
   /** Theme for nav menu */
   navTheme: 'light' | 'dark';
-  /** Primary color of ant design */
+  /** Primary color of Choerodon-Ui-Pro */
   primaryColor: string;
   /** Nav menu position: `side` or `top` */
   layout: 'side' | 'top';
@@ -250,7 +250,7 @@ export interface Settings {
   pwa: boolean;
   // Your custom iconfont Symbol script Url
   // eg：//at.alicdn.com/t/font_1039637_btcrd5co4w.js
-  // Usage: https://github.com/ant-design/ant-design-pro/pull/3517
+  // Usage: https://github.com/sunchir/choerodon-ui-pro/pull/3517
   iconfontUrl: string;
   colorWeak: boolean;
   /** @name 是否可以超出 */
@@ -308,21 +308,21 @@ export interface Route {
   copyright="2019 蚂蚁金服体验技术部出品"
   links={[
     {
-      key: 'Ant Design Pro',
-      title: 'Ant Design Pro',
-      href: 'https://pro.ant.design',
+      key: 'Choerodon-Ui',
+      title: 'Choerodon-Ui',
+      href: 'https://open-hand.gitee.io/choerodon-ui',
       blankTarget: true,
     },
     {
       key: 'github',
       title: <GithubOutlined />,
-      href: 'https://github.com/ant-design/ant-design-pro',
+      href: 'https://github.com/sunchir/choerodon-ui-pro',
       blankTarget: true,
     },
     {
-      key: 'Ant Design',
-      title: 'Ant Design',
-      href: 'https://ant.design',
+      key: 'Choerodon-Ui-Pro',
+      title: 'Choerodon-Ui-Pro',
+      href: 'https://github.com/sunchir/choerodon-ui-pro',
       blankTarget: true,
     },
   ]}

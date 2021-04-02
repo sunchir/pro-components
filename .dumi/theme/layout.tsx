@@ -13,26 +13,26 @@ export default ({ children, ...props }: IRouteComponentProps) => {
   const colorScheme = window.matchMedia('(prefers-color-scheme: dark)').matches && 'dark';
   const defaultDarken = localStorage.getItem('procomponents_dark_theme') || colorScheme;
 
-  useEffect(() => {
-    (function (h, o, t, j, a, r) {
-      // @ts-ignore
-      h.hj =
-        // @ts-ignore
-        h.hj ||
-        function () {
-          // @ts-ignore
-          (h.hj.q = h.hj.q || []).push(arguments);
-        };
-      // @ts-ignore
-      h._hjSettings = { hjid: 2036108, hjsv: 6 };
-      a = o.getElementsByTagName('head')[0];
-      r = o.createElement('script');
-      r.async = 1;
-      // @ts-ignore
-      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-  }, []);
+  // useEffect(() => {
+  //   (function (h, o, t, j, a, r) {
+  //     // @ts-ignore
+  //     h.hj =
+  //       // @ts-ignore
+  //       h.hj ||
+  //       function () {
+  //         // @ts-ignore
+  //         (h.hj.q = h.hj.q || []).push(arguments);
+  //       };
+  //     // @ts-ignore
+  //     h._hjSettings = { hjid: 2036108, hjsv: 6 };
+  //     a = o.getElementsByTagName('head')[0];
+  //     r = o.createElement('script');
+  //     r.async = 1;
+  //     // @ts-ignore
+  //     r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+  //     a.appendChild(r);
+  //   })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+  // }, []);
   return (
     <>
       <div

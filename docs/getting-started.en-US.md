@@ -8,7 +8,7 @@ nav:
   path: /docs
 ---
 
-<h1 align="center">Choerodon-ui Pro</h1>
+<h1 align="center">Choerodon-Ui Pro</h1>
 
 <div align="center">
 
@@ -18,31 +18,11 @@ Quickly build and use Choerodon UI scaffolding
 
 </div>
 
--Preview: https://c7n-ui-pro.netlify.app/
+-Preview: [preview path](http://134.175.52.77:8000/)
 
 ## Features
 
--:bulb: **TypeScript**: Application-level JavaScript language
-
--:scroll: **Block**: quickly build pages through block templates
-
--:gem: **elegant and beautiful**: carefully designed based on Choerodon-ui system
-
--:triangular_ruler: **Common design patterns**: Refined from typical pages and scenes of middle and back-end applications
-
--:rocket: **Latest Technology Stack**: Developed using front-end front-end technologies such as React/umi/dva/choerodon-ui
-
--:iphone: **Responsive**: Designed for different screen sizes
-
--:art: **Theme**: Configurable themes meet diverse brand demands
-
--:globe_with_meridians: **Internationalization**: Built-in internationalization solutions common to the industry
-
--:gear: **Best Practices**: Good engineering practices help you continue to produce high-quality code
-
--:1234: **Mock data**: Practical local data debugging solution
-
--:white_check_mark: **UI test**: Automated testing guarantees the quality of front-end products
+**TypeScript**: Application-level JavaScript language **elegant and beautiful**: carefully designed based on Choerodon-ui system **Common design patterns**: Refined from typical pages and scenes of middle and back-end applications **Responsive**: Designed for different screen sizes **Internationalization**: Built-in internationalization solutions common to the industry **Best Practices**: Good engineering practices help you continue to produce high-quality code **Mock data**: Practical local data debugging solution **UI test**: Automated testing guarantees the quality of front-end products
 
 ## basic structure
 
@@ -120,7 +100,7 @@ Modern browsers and IE11.
 
 ## Participate in Contribution
 
-We welcome your contribution very much. You can build with us in the following ways :smiley::
+We welcome your contribution very much. You can build with us in the following ways.
 
 -Use Choerodon-ui Pro in your company or personal projects.
 

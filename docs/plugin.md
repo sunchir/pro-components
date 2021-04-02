@@ -10,7 +10,7 @@ nav:
 
 # umi 插件集合
 
-@c7n-umi/plugin-layout 针对 react 应用的插件集。
+@c7n-umi/preact 针对 react 应用的插件集。
 
 包含：
 

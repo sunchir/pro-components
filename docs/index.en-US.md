@@ -1,10 +1,10 @@
 ---
-title: choerodon-ui-pro - The collision of performance components and performance tools
+title: Choerodon-Ui-Pro - The collision of performance components and performance tools
 order: 10
 sidebar: false
 hero:
-  title: choerodon-ui-pro
-  desc: 🏆 choerodon-ui-pro!
+  title: Choerodon-Ui-Pro
+  desc: 🏆 Choerodon-Ui-Pro!
   actions:
     - text: 🥳 quick-start →
       link: /en-US/docs/getting-started
